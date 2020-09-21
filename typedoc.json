@@ -1,0 +1,13 @@
+{
+    "name": "TurtlePay RabbitMQ Helper Library",
+    "out": "./docs",
+    "inputFiles": [
+        "./src"
+    ],
+    "excludeExternals": true,
+    "excludeNotExported": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "listInvalidSymbolLinks": true,
+    "mode": "file"
+}
