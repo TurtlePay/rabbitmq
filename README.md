@@ -21,7 +21,7 @@ Provides a mechanism and interface for storing the TurtleCoin® blockchain in a 
 
 ## Documentation
 
-Full library documentation is available at [https://rabbitmq.turtlepay.io](https://rabbitmq.turtlepay.io)
+Full library documentation is available at [https://rabbitmq.turtlepay.dev](https://rabbitmq.turtlepay.dev)
 
 ## Install
 
