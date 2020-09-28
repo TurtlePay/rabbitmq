@@ -31,16 +31,14 @@ export class RabbitMQ extends EventEmitter {
         host: string,
         username: string,
         password: string,
-        autoReconnect: boolean = true,
-        port: number = 5672
+        autoReconnect = true,
+        port = 5672
     ) {
         super();
 
         this.m_connectionString = buildConnectionString(host, port, username, password);
 
-        this.m_replyQueue = UUID()
-            .toString()
-            .replace(/-/g, '');
+        this.m_replyQueue = uuid();
 
         if (autoReconnect) {
             this.on('disconnect', error => {
@@ -67,6 +65,9 @@ export class RabbitMQ extends EventEmitter {
     public on(event: 'connect', listener: () => void): this;
 
     public on(event: 'log', listener: (entry: Error | string) => void): this;
+
+    /** @ignore */
+    public on(event: 'reply', listener: (message: amqplib.ConsumeMessage) => void): this;
 
     public on<T>(event: 'message', listener: (queue: string, message: amqplib.Message, payload: T) => void): this;
 
@@ -100,7 +101,13 @@ export class RabbitMQ extends EventEmitter {
 
         this.m_channel = channel;
 
-        await this.createQueue(this.m_replyQueue, false, true);
+        await this.createQueue(this.replyQueue, false, true);
+
+        await this.m_channel.consume(this.replyQueue, message => {
+            if (message !== null) {
+                this.emit('reply', message);
+            }
+        });
 
         this.emit('connect');
     }
@@ -119,7 +126,19 @@ export class RabbitMQ extends EventEmitter {
         if (this.m_channel) {
             await this.m_channel.assertQueue(queue, { durable, exclusive });
         } else {
-            throw new Error('No connected channel');
+            throw new Error('Not connected channel');
+        }
+    }
+
+    /**
+     * Deletes a message queue from the server
+     * @param queue the name of the queue on the server
+     */
+    public async deleteQueue (queue: string) {
+        if (this.m_channel) {
+            await this.m_channel.deleteQueue(queue);
+        } else {
+            throw new Error('Not connected to channel');
         }
     }
 
@@ -191,17 +210,21 @@ export class RabbitMQ extends EventEmitter {
      * @param queue the name of the queue to send our message to
      * @param payload the payload to be sent with the message
      * @param timeout the amount of time (ms) that we are willing to wait for a reply
+     * @param useOneTimeQueue whether we should use a one-time use queue to receive the reply (this may be necessary in some use cases)
      */
     public async requestReply<T, U> (
         queue: string,
         payload: T,
-        timeout = 5000
+        timeout = 5000,
+        useOneTimeQueue = false
     ): Promise<U> {
         /* eslint-disable-next-line no-async-promise-executor */
         return new Promise(async (resolve, reject) => {
             if (!this.m_channel) {
                 throw new Error('No connected channel');
             }
+
+            const replyQueue = (useOneTimeQueue) ? uuid() : this.replyQueue;
 
             const requestId = UUID()
                 .toString()
@@ -215,8 +238,8 @@ export class RabbitMQ extends EventEmitter {
 
             controller.signal.addEventListener('abort', listener);
 
-            await this.m_channel.consume(this.m_replyQueue, async (message) => {
-                if (message !== null && message.properties.correlationId === requestId) {
+            const checkReply = async (message: amqplib.ConsumeMessage): Promise<void> => {
+                if (message.properties.correlationId === requestId) {
                     const response = JSON.parse(message.content.toString());
 
                     await this.ack(message);
@@ -224,16 +247,34 @@ export class RabbitMQ extends EventEmitter {
                     if (!controller.signal.aborted) {
                         controller.signal.removeEventListener('abort', listener);
 
+                        if (!useOneTimeQueue) {
+                            this.removeListener('reply', checkReply);
+                        } else {
+                            await this.deleteQueue(replyQueue);
+                        }
+
                         return resolve(response);
                     }
-                } else if (message !== null) {
-                    await this.nack(message);
+                } else {
+                    return this.nack(message);
                 }
-            });
+            };
+
+            if (!useOneTimeQueue) {
+                this.on('reply', checkReply);
+            } else {
+                await this.createQueue(replyQueue, false, true);
+
+                await this.m_channel.consume(replyQueue, async (message) => {
+                    if (message !== null) {
+                        return checkReply(message);
+                    }
+                });
+            }
 
             if (!await this.sendToQueue<T>(queue, payload, {
                 correlationId: requestId,
-                replyTo: this.m_replyQueue,
+                replyTo: replyQueue,
                 expiration: timeout
             })) {
                 throw new Error('Could not send request to queue');
@@ -264,6 +305,13 @@ export class RabbitMQ extends EventEmitter {
 
         return this.m_channel.sendToQueue(queue, payload, options);
     }
+}
+
+/** @ignore */
+function uuid (): string {
+    return UUID()
+        .toString()
+        .replace(/-/g, '');
 }
 
 /**
