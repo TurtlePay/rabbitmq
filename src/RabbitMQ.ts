@@ -25,11 +25,18 @@ export class RabbitMQ extends EventEmitter {
      * @param username the username for the RabbitMQ server
      * @param password the password for the RabbitMQ server
      * @param autoReconnect whether we should automatically reconnect when disconnected
+     * @param port the port number the RabbitMQ server is listening on
      */
-    constructor (host: string, username: string, password: string, autoReconnect = true) {
+    constructor (
+        host: string,
+        username: string,
+        password: string,
+        autoReconnect: boolean = true,
+        port: number = 5672
+    ) {
         super();
 
-        this.m_connectionString = buildConnectionString(host, username, password);
+        this.m_connectionString = buildConnectionString(host, port, username, password);
 
         this.m_replyQueue = UUID()
             .toString()
@@ -277,7 +284,7 @@ export function getConnectionParameters (): { host: string, port: number, user: 
 }
 
 /** @ignore */
-const buildConnectionString = (host: string, username: string, password: string): string => {
+const buildConnectionString = (host: string, port: number, username: string, password: string): string => {
     const result = ['amqp://'];
 
     if (username.length !== 0) {
@@ -291,6 +298,8 @@ const buildConnectionString = (host: string, username: string, password: string)
     }
 
     result.push(host);
+
+    result.push(':' + port.toString());
 
     return result.join('');
 };
