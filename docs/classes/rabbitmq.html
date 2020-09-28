@@ -113,6 +113,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="rabbitmq.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rabbitmq.html#connect" class="tsd-kind-icon">connect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rabbitmq.html#createqueue" class="tsd-kind-icon">create<wbr>Queue</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rabbitmq.html#deletequeue" class="tsd-kind-icon">delete<wbr>Queue</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="rabbitmq.html#emit" class="tsd-kind-icon">emit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="rabbitmq.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="rabbitmq.html#getmaxlisteners" class="tsd-kind-icon">get<wbr>Max<wbr>Listeners</a></li>
@@ -145,14 +146,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>RabbitMQ<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, autoReconnect<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="rabbitmq.html" class="tsd-signature-type">RabbitMQ</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>RabbitMQ<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, autoReconnect<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, port<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="rabbitmq.html" class="tsd-signature-type">RabbitMQ</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L20">src/RabbitMQ.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L20">src/RabbitMQ.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -191,6 +192,14 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>whether we should automatically reconnect when disconnected</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> port: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 5672</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the port number the RabbitMQ server is listening on</p>
 										</div>
 									</div>
 								</li>
@@ -247,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L54">src/RabbitMQ.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L59">src/RabbitMQ.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -272,7 +281,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L76">src/RabbitMQ.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L84">src/RabbitMQ.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,7 +359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L85">src/RabbitMQ.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L93">src/RabbitMQ.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -372,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L107">src/RabbitMQ.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L121">src/RabbitMQ.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -398,6 +407,37 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> exclusive: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>whether we need exclusive access to this queue</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="deletequeue" class="tsd-anchor"></a>
+					<h3>delete<wbr>Queue</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Queue<span class="tsd-signature-symbol">(</span>queue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L137">src/RabbitMQ.ts:137</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Deletes a message queue from the server</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>queue: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the queue on the server</p>
 									</div>
 								</li>
 							</ul>
@@ -526,7 +566,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L126">src/RabbitMQ.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L152">src/RabbitMQ.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -614,7 +654,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L58">src/RabbitMQ.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L63">src/RabbitMQ.ts:63</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -650,7 +690,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L60">src/RabbitMQ.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L65">src/RabbitMQ.ts:65</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -680,7 +720,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L62">src/RabbitMQ.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L67">src/RabbitMQ.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -716,7 +756,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L64">src/RabbitMQ.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L72">src/RabbitMQ.ts:72</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -817,7 +857,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L137">src/RabbitMQ.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L163">src/RabbitMQ.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -963,7 +1003,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L150">src/RabbitMQ.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L176">src/RabbitMQ.ts:176</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1075,7 +1115,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L173">src/RabbitMQ.ts:173</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L199">src/RabbitMQ.ts:199</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1112,13 +1152,13 @@
 					<a name="requestreply" class="tsd-anchor"></a>
 					<h3>request<wbr>Reply</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">request<wbr>Reply&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>queue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Reply&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>queue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, useOneTimeQueue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L188">src/RabbitMQ.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L215">src/RabbitMQ.ts:215</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1158,6 +1198,12 @@
 										<p>the amount of time (ms) that we are willing to wait for a reply</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> useOneTimeQueue: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>whether we should use a one-time use queue to receive the reply (this may be necessary in some use cases)</p>
+									</div>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -1173,7 +1219,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/6c047c3/src/RabbitMQ.ts#L245">src/RabbitMQ.ts:245</a></li>
+									<li>Defined in <a href="https://github.com/TurtlePay/rabbitmq/blob/02ad097/src/RabbitMQ.ts#L293">src/RabbitMQ.ts:293</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1310,6 +1356,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="rabbitmq.html#createqueue" class="tsd-kind-icon">create<wbr>Queue</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="rabbitmq.html#deletequeue" class="tsd-kind-icon">delete<wbr>Queue</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="rabbitmq.html#emit" class="tsd-kind-icon">emit</a>
