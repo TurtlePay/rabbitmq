@@ -1,5 +1,4 @@
 {
-    "name": "TurtlePay RabbitMQ Helper Library",
     "out": "./docs",
     "inputFiles": [
         "./src"

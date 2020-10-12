@@ -1,11 +1,10 @@
 {
   "name": "@turtlepay/rabbitmq",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "TurtlePay RabbitMQ Helper Library",
   "main": "dist/RabbitMQ.js",
   "types": "dist/RabbitMQ.d.ts",
   "scripts": {
-    "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('Use yarn for installing: https://yarnpkg.com/en/docs/install')\"",
     "build": "./node_modules/.bin/tsc",
     "docs": "./node_modules/.bin/typedoc && touch docs/.nojekyll && git restore docs/CNAME",
     "test": "yarn style",
@@ -13,6 +12,9 @@
     "fix-style": "./node_modules/.bin/eslint --fix src/**/*.ts",
     "prepublishOnly": "yarn build"
   },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/turtlepay/rabbitmq.git"

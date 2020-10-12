@@ -26,7 +26,7 @@ Full library documentation is available at [https://rabbitmq.turtlepay.dev](http
 ## Install
 
 ```sh
-yarn install @turtlepay/rabbitmq
+yarn add @turtlepay/rabbitmq
 ```
 
 ## Usage
