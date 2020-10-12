@@ -83,4 +83,4 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2018-2020 [TurtlePay® Development Team](https://github.com/TurtlePay).
 
-This project is [AGPL-3.0](https://github.com/TurtlePay/rabbitmq/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/TurtlePay/rabbitmq/blob/master/LICENSE) licensed.
