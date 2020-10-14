@@ -321,12 +321,8 @@ function uuid (): string {
 export function getConnectionParameters (): { host: string, port: number, user: string, pass: string } {
     const host = process.env.RABBIT_HOST || 'localhost';
     const port = (process.env.RABBIT_PORT) ? parseInt(process.env.RABBIT_PORT, 10) : 5672;
-    const user = process.env.RABBIT_USER || undefined;
-    const pass = process.env.RABBIT_PASS || undefined;
-
-    if (user === undefined || pass === undefined) {
-        throw new Error('!! Missing RabbitMQ connection parameters in environment variables !!');
-    }
+    const user = process.env.RABBIT_USER || '';
+    const pass = process.env.RABBIT_PASS || '';
 
     return { host, port, user, pass };
 }
