@@ -1,6 +1,6 @@
 {
   "name": "@turtlepay/rabbitmq",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "TurtlePay RabbitMQ Helper Library",
   "main": "dist/RabbitMQ.js",
   "types": "dist/RabbitMQ.d.ts",
@@ -52,7 +52,7 @@
     "@types/uuid": "^8.3.0",
     "abort-controller": "^3.0.0",
     "amqplib": "^0.7.1",
-    "dotenv": "^9.0.0",
+    "dotenv": "^9.0.1",
     "uuid": "^8.3.2"
   }
 }
